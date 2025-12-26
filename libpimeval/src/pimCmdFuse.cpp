@@ -1,8 +1,5 @@
 // File: pimCmdFuse.cpp
 // PIMeval Simulator - PIM API Fusion
-// Copyright (c) 2024 University of Virginia
-// This file is licensed under the MIT License.
-// See the LICENSE file in the root of this repository for more details.
 
 #include "pimCmdFuse.h"
 #include <cstdio>
@@ -39,4 +36,3 @@ pimCmdFuse::updateStats() const
   // TODO: Parse m_prog and update stats
   return true;
 }
-
