@@ -8,7 +8,7 @@
 #include <unordered_map>
 #include "pimParamsDram.h"
 
-//! @class  pimParamsDDRDram
+//! @class  pimParamsHBMDram
 //! @brief  DRAM parameters (DRAMsim3 compatible)
 class pimParamsHBMDram : public pimParamsDram
 {
