@@ -17,7 +17,7 @@ public:
   pimParamsHBMDram(std::unordered_map<std::string, std::string> params);
   ~pimParamsHBMDram() override = default;
 
-    int getDeviceWidth() const override { return m_deviceWidth;}
+  int getDeviceWidth() const override { return m_deviceWidth;}
   int getBurstLength() const override { return m_BL;}
   int getNumChipsPerRank() const override {return m_busWidth / m_deviceWidth; }
   double getNsRowRead() const override { return m_tCK * (m_tRAS + m_tRP); }
