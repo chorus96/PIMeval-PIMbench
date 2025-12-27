@@ -43,33 +43,6 @@ void getMatrix(int row, int column, int padding, std::vector<std::vector<int>> &
   }
 }
 
-void addPadding(int row, int column, int padding, std::vector<std::vector<int>> &inputMatrix, std::vector<std::vector<int>> &resultMatrix)
-{
-  resultMatrix.resize(row + 2 * padding, std::vector<int>(column + 2 * padding, 0));
-#pragma omp parallel for
-  for (int i = 0; i < row; ++i)
-  {
-    for (int j = 0; j < column; ++j)
-    {
-      resultMatrix[i + 1][j + 1] = inputMatrix[i][j];
-    }
-  }
-}
-
-void flatten3DMat(std::vector<std::vector<std::vector<int>>>& inputMatrix, std::vector<int>& flattenedVector)
-{
-  for (const auto &matrix : inputMatrix)
-  {
-    for (const auto &row : matrix)
-    {
-      for (int element : row)
-      {
-        flattenedVector.push_back(element);
-      }
-    }
-  }
-}
-
 bool createDevice(const char *configFile)
 {
   if (configFile == nullptr)
@@ -98,52 +71,6 @@ bool createDevice(const char *configFile)
     }
   }
   return true;
-}
-
-// Function to print the dimensions of a 2D matrix
-inline void printMatrixDimensions (std::vector<std::vector<int>> &inputMatrix) {     
-  std::cout << inputMatrix.size() << " x " 
-            << inputMatrix[0].size() 
-            << std::endl;
-}
-
-// Function to print the dimensions of a 3D matrix
-inline void printMatrixDimensions (std::vector<std::vector<std::vector<int>>> &inputMatrix) {
-  std::cout << inputMatrix.size() << " x " 
-            << inputMatrix[0].size() << " x " 
-            << inputMatrix[0][0].size() 
-            << std::endl;   
-}
-
-// Function to print a vector
-void printVector(std::vector<int>& vec) {
-  for (auto val : vec) {
-    std::cout << val << " ";
-  }
-  std::cout << std::endl;
-}
-
-// Function to print a 2D matrix
-void printMatrix(std::vector<std::vector<int>>& matrix) {
-  for (const auto& row : matrix) {
-    for (int val : row) {
-      std::cout << val << " ";
-    }
-    std::cout << std::endl;
-  }
-}
-
-// Function to print a 3D matrix
-void printMatrix(std::vector<std::vector<std::vector<int>>>& matrix) {
-  for (const auto& mat2D : matrix) {
-    for (const auto& row : mat2D) {
-      for (int val : row) {
-        std::cout << val << " ";
-      }
-      std::cout << std::endl;
-    }
-    std::cout << "---" << std::endl; // Separator between 2D matrices
-  }
 }
 
 #endif
