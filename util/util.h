@@ -1,7 +1,4 @@
 // PIMeval Simulator - Application Utilities
-// Copyright (c) 2024 University of Virginia
-// This file is licensed under the MIT License.
-// See the LICENSE file in the root of this repository for more details.
 
 #ifndef PIM_FUNC_SIM_APPS_UTIL_H
 #define PIM_FUNC_SIM_APPS_UTIL_H
@@ -30,23 +27,6 @@ void getVector(uint64_t vectorLength, std::vector<int> &srcVector)
   for (uint64_t i = 0; i < vectorLength; ++i)
   {
     srcVector[i] = i % MAX_NUMBER;
-  }
-}
-
-void getVectorFP32(uint64_t vectorLength, std::vector<float> &srcVector, bool nonZero)
-{
-  static std::random_device rd;
-  static std::mt19937 gen(rd());
-  std::uniform_real_distribution<> dist(-1e10, 1e10);
-
-  srcVector.resize(vectorLength);
-  #pragma omp parallel for
-  for (uint64_t i = 0; i < vectorLength; ++i) {
-    float val = 0.0;
-    do {
-      val = dist(gen);
-      srcVector[i] = dist(gen);
-    } while (nonZero && val == 0.0);
   }
 }
 
