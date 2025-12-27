@@ -1,7 +1,4 @@
 # Makefile for PIMeval Simulator - Library
-# Copyright (c) 2024 University of Virginia
-# This file is licensed under the MIT License.
-# See the LICENSE file in the root of this repository for more details.
 
 CXX := g++
 CXXFLAGS := -Wall -Wextra -std=c++17
@@ -76,4 +73,3 @@ create_link:
 	if [ ! -e $(INCDIR)/libpimeval.h ] ; then \
 		ln -s ../$(SRCDIR)/libpimeval.h $(INCDIR)/libpimeval.h ; \
 	fi
-
