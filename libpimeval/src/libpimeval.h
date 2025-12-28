@@ -1,8 +1,5 @@
 // File: libpimeval.h
 // PIMeval Simulator - Library Interface
-// Copyright (c) 2024 University of Virginia
-// This file is licensed under the MIT License.
-// See the LICENSE file in the root of this repository for more details.
 
 #ifndef LAVA_LIB_PIM_EVAL_H
 #define LAVA_LIB_PIM_EVAL_H
@@ -335,4 +332,3 @@ PimStatus pimOpAP(int numSrc, ...);
 PimStatus pimOpAAP(int numSrc, int numDest, ...);
 
 #endif
-
