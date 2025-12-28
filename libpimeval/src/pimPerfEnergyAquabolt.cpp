@@ -1,8 +1,5 @@
 // File: pimPerfEnergyAquabolt.cc
 // PIMeval Simulator - Performance Energy Models
-// Copyright (c) 2024 University of Virginia
-// This file is licensed under the MIT License.
-// See the LICENSE file in the root of this repository for more details.
 
 #include "pimPerfEnergyAquabolt.h"
 #include "pimCmd.h"
@@ -271,4 +268,3 @@ pimPerfEnergyAquabolt::getPerfEnergyForRotate(PimCmdEnum cmdType, const pimObjIn
 
   return pimeval::perfEnergy(msRuntime, mjEnergy, msRead, msWrite, msCompute, totalOp);
 }
-
