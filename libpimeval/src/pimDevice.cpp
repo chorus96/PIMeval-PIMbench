@@ -1,8 +1,5 @@
 // File: pimDevice.cpp
 // PIMeval Simulator - PIM Device
-// Copyright (c) 2024 University of Virginia
-// This file is licensed under the MIT License.
-// See the LICENSE file in the root of this repository for more details.
 
 #include "pimDevice.h"
 #include "pimResMgr.h"
@@ -269,4 +266,3 @@ pimDevice::executeCmd(std::unique_ptr<pimCmd> cmd)
 
   return ok;
 }
-
