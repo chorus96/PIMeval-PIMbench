@@ -46,6 +46,7 @@ endif
 # Run "make PIM_SIM_TARGET=<PimDeviceEnum>" to override default simulation target
 PIM_SIM_TARGET ?= PIM_DEVICE_NONE
 CXXFLAGS += -DPIM_SIM_TARGET=$(PIM_SIM_TARGET)
+CXXFLAGS += -Wno-unused-value -Wno-unused-parameter -Wno-unknown-pragmas
 
 debug: $(TARGET)
 	@echo "INFO: libpimeval target = $(MAKECMDGOALS), CXXFLAGS = $(CXXFLAGS)"

@@ -1,7 +1,7 @@
 # Makefile: C++ version of matrix vector multiplication
 
 PROJ_ROOT = ../../..
-include ${PROJ_ROOT}/Makefile.common
+include Makefile.common
 
 # make USE_OPENMP=1
 USE_OPENMP ?= 0
