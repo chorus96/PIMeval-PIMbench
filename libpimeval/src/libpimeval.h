@@ -285,38 +285,4 @@ enum PimRowReg {
   PIM_RREG_MAX
 };
 
-// BitSIMD-V micro ops
-PimStatus pimOpReadRowToSa(PimObjId src, unsigned ofst);
-PimStatus pimOpWriteSaToRow(PimObjId src, unsigned ofst);
-PimStatus pimOpTRA(PimObjId src1, unsigned ofst1, PimObjId src2, unsigned ofst2, PimObjId src3, unsigned ofst3);
-PimStatus pimOpMove(PimObjId objId, PimRowReg src, PimRowReg dest);
-PimStatus pimOpSet(PimObjId objId, PimRowReg src, bool val);
-PimStatus pimOpNot(PimObjId objId, PimRowReg src, PimRowReg dest);
-PimStatus pimOpAnd(PimObjId objId, PimRowReg src1, PimRowReg src2, PimRowReg dest);
-PimStatus pimOpOr(PimObjId objId, PimRowReg src1, PimRowReg src2, PimRowReg dest);
-PimStatus pimOpNand(PimObjId objId, PimRowReg src1, PimRowReg src2, PimRowReg dest);
-PimStatus pimOpNor(PimObjId objId, PimRowReg src1, PimRowReg src2, PimRowReg dest);
-PimStatus pimOpXor(PimObjId objId, PimRowReg src1, PimRowReg src2, PimRowReg dest);
-PimStatus pimOpXnor(PimObjId objId, PimRowReg src1, PimRowReg src2, PimRowReg dest);
-PimStatus pimOpMaj(PimObjId objId, PimRowReg src1, PimRowReg src2, PimRowReg src3, PimRowReg dest);
-PimStatus pimOpSel(PimObjId objId, PimRowReg cond, PimRowReg src1, PimRowReg src2, PimRowReg dest);
-PimStatus pimOpRotateRH(PimObjId objId, PimRowReg src);
-PimStatus pimOpRotateLH(PimObjId objId, PimRowReg src);
-
-// SIMDRAM micro ops
-// AP:
-//   - Functionality: {srcRows} = MAJ(srcRows)
-//   - Action: Activate srcRows simultaneously, followed by a precharge
-//   - Example: pimOpAP(3, T0, 0, T1, 0, T2, 0) // T0, T1, T2 = MAJ(T0, T1, T2)
-// AAP:
-//   - Functionality: {srcRows, destRows} = MAJ(srcRows)
-//   - Action: Activate srcRows simultaneously, copy result to all destRows, followed by a precharge
-//   - Example: pimOpAAP(1, 2, DCC0N, 0, T0, 0, T3, 0) // T0, T3 = DCC0N
-// Requirements:
-//   - numSrc must be odd (1 or 3) to perform MAJ operation
-//   - Number of var args must be 2*numSrc for AP and 2*(numDest+numSrc) for AAP
-//   - Var args must be a list of (PimObjId, unsigned ofst) pairs
-PimStatus pimOpAP(int numSrc, ...);
-PimStatus pimOpAAP(int numSrc, int numDest, ...);
-
 #endif

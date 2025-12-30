@@ -129,28 +129,6 @@ public:
   // PIM API Fusion
   bool pimFuse(PimProg prog);
 
-  // BitSIMD-V micro ops
-  bool pimOpReadRowToSa(PimObjId src, unsigned ofst);
-  bool pimOpWriteSaToRow(PimObjId src, unsigned ofst);
-  bool pimOpTRA(PimObjId src1, unsigned ofst1, PimObjId src2, unsigned ofst2, PimObjId src3, unsigned ofst3);
-  bool pimOpMove(PimObjId objId, PimRowReg src, PimRowReg dest);
-  bool pimOpSet(PimObjId objId, PimRowReg dest, bool val);
-  bool pimOpNot(PimObjId objId, PimRowReg src, PimRowReg dest);
-  bool pimOpAnd(PimObjId objId, PimRowReg src1, PimRowReg src2, PimRowReg dest);
-  bool pimOpOr(PimObjId objId, PimRowReg src1, PimRowReg src2, PimRowReg dest);
-  bool pimOpNand(PimObjId objId, PimRowReg src1, PimRowReg src2, PimRowReg dest);
-  bool pimOpNor(PimObjId objId, PimRowReg src1, PimRowReg src2, PimRowReg dest);
-  bool pimOpXor(PimObjId objId, PimRowReg src1, PimRowReg src2, PimRowReg dest);
-  bool pimOpXnor(PimObjId objId, PimRowReg src1, PimRowReg src2, PimRowReg dest);
-  bool pimOpMaj(PimObjId objId, PimRowReg src1, PimRowReg src2, PimRowReg src3, PimRowReg dest);
-  bool pimOpSel(PimObjId objId, PimRowReg cond, PimRowReg src1, PimRowReg src2, PimRowReg dest);
-  bool pimOpRotateRH(PimObjId objId, PimRowReg src);
-  bool pimOpRotateLH(PimObjId objId, PimRowReg src);
-
-  // SIMDRAM micro ops
-  bool pimOpAP(int numSrc, va_list args);
-  bool pimOpAAP(int numSrc, int numDest, va_list args);
-
 private:
   pimSim();
   ~pimSim();
