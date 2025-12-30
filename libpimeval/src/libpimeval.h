@@ -180,9 +180,6 @@ PimStatus pimNEScalar(PimObjId src, PimObjId destBool, uint64_t scalarValue);
 PimStatus pimScaledAdd(PimObjId src1, PimObjId src2, PimObjId dest, uint64_t scalarValue);
 PimStatus pimPopCount(PimObjId src, PimObjId dest);
 
-// Only supported by bit-parallel PIM
-PimStatus pimPrefixSum(PimObjId src, PimObjId dest);
-
 // MAC operation: dest += src1 * src2
 // Note: src2 is a global buffer that holds a vector of values to be multiplied with src1.
 // Note: dest must be of the same data type as src1 and src2; Size of dest must be equal to the total number of PIM cores in the device.

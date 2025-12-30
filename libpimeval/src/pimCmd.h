@@ -469,25 +469,6 @@ protected:
   uint64_t m_idxEnd = std::numeric_limits<uint64_t>::max();
 };
 
-//! @class  pimCmdPrefixSum
-//! @brief  Pim CMD: PrefixSum
-class pimCmdPrefixSum : public pimCmd
-{
-public:
-  pimCmdPrefixSum(PimCmdEnum cmdType, PimObjId src, PimObjId dest)
-    : pimCmd(cmdType), m_src(src), m_dst(dest)
-  {
-    assert(cmdType == PimCmdEnum::PREFIX_SUM);
-  }
-  virtual ~pimCmdPrefixSum() {}
-  virtual bool execute() override;
-  virtual bool sanityCheck() const override;
-  virtual bool computeRegion(unsigned index) override;
-  virtual bool updateStats() const override;
-protected:
-  PimObjId m_src, m_dst;
-};
-
 //! @class  pimCmdMAC
 //! @brief  Pim CMD: Multiply-Accumulate
 template <typename T>

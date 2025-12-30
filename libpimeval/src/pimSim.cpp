@@ -623,16 +623,6 @@ pimSim::pimPopCount(PimObjId src, PimObjId dest)
   return m_device->executeCmd(std::move(cmd));
 }
 
-// @brief  PIM OP: prefixsum
-bool
-pimSim::pimPrefixSum(PimObjId src, PimObjId dest)
-{
-  pimPerfMon perfMon("pimPrefixSum");
-  if (!isValidDevice()) { return false; }
-  std::unique_ptr<pimCmd> cmd = std::make_unique<pimCmdPrefixSum>(PimCmdEnum::PREFIX_SUM, src, dest);
-  return m_device->executeCmd(std::move(cmd));
-}
-
  //! @brief  PIM OP: multiply-accumulate
 bool pimSim::pimMAC(PimObjId src1, PimObjId src2, void* dest)
 {
