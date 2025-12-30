@@ -3,11 +3,7 @@
 
 #include "pimPerfEnergyBase.h"
 #include "pimCmd.h"
-#include "pimPerfEnergyBitSerial.h"
-#include "pimPerfEnergyFulcrum.h"
-#include "pimPerfEnergyBankLevel.h"
 #include "pimPerfEnergyAquabolt.h"
-#include "pimPerfEnergyAim.h"
 #include <cstdint>
 #include <cstdio>
 
@@ -17,24 +13,9 @@ std::unique_ptr<pimPerfEnergyBase>
 pimPerfEnergyFactory::createPerfEnergyModel(const pimPerfEnergyModelParams& params)
 {
   switch (params.getSimTarget()) {
-    case PIM_DEVICE_BITSIMD_V:
-    case PIM_DEVICE_BITSIMD_V_AP:
-    case PIM_DEVICE_BITSIMD_H:
-    case PIM_DEVICE_SIMDRAM:
-      printf("PIM-Info: Created performance energy model for bit-serial PIM\n");
-      return std::make_unique<pimPerfEnergyBitSerial>(params);
-    case PIM_DEVICE_FULCRUM:
-      printf("PIM-Info: Created performance energy model for Fulcrum\n");
-      return std::make_unique<pimPerfEnergyFulcrum>(params);
-    case PIM_DEVICE_BANK_LEVEL:
-      printf("PIM-Info: Created performance energy model for bank-level PIM\n");
-      return std::make_unique<pimPerfEnergyBankLevel>(params);
     case PIM_DEVICE_AQUABOLT:
       printf("PIM-Info: Created performance energy model for AQUABOLT\n");
       return std::make_unique<pimPerfEnergyAquabolt>(params);
-    case PIM_DEVICE_AIM:
-      printf("PIM-Info: Created performance energy model for AiM\n");
-      return std::make_unique<pimPerfEnergyAim>(params);
     default:
       printf("PIM-Warning: Created performance energy base model for unrecognized simulation target\n");
   }
