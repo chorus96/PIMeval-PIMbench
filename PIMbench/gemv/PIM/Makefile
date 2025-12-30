@@ -8,6 +8,7 @@ USE_OPENMP ?= 0
 ifeq ($(USE_OPENMP),1)
 	CXXFLAGS += -fopenmp
 endif
+CXXFLAGS += -Wno-unknown-pragmas
 
 EXEC := gemv.out
 SRC := gemv.cpp

@@ -57,19 +57,6 @@ pimSim::uninit()
   m_config.uninit();
 }
 
-//! @brief  Create a PIM device
-bool
-pimSim::createDevice(PimDeviceEnum deviceType, unsigned numRanks, unsigned numBankPerRank, unsigned numSubarrayPerBank, unsigned numRows, unsigned numCols, unsigned bufferSize)
-{
-  pimPerfMon perfMon("createDevice");
-  uninit();
-  bool success = m_config.init(deviceType, numRanks, numBankPerRank, numSubarrayPerBank, numRows, numCols, bufferSize);
-  if (!success) {
-    return false;
-  }
-  return createDeviceCommon();
-}
-
 //! @brief  Create a PIM device from a config file
 bool
 pimSim::createDeviceFromConfig(PimDeviceEnum deviceType, const char* configFilePath)

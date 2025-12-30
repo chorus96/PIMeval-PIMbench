@@ -5,14 +5,6 @@
 #include "pimSim.h"
 #include "pimUtils.h"
 
-//! @brief  Create a PIM device
-PimStatus
-pimCreateDevice(PimDeviceEnum deviceType, unsigned numRanks, unsigned numBankPerRank, unsigned numSubarrayPerBank, unsigned numRows, unsigned numCols, unsigned bufferSize)
-{
-  bool ok = pimSim::get()->createDevice(deviceType, numRanks, numBankPerRank, numSubarrayPerBank, numRows, numCols, bufferSize);
-  return ok ? PIM_OK : PIM_ERROR;
-}
-
 //! @brief  Create a PIM device from config file
 PimStatus
 pimCreateDeviceFromConfig(PimDeviceEnum deviceType, const char* configFileName)

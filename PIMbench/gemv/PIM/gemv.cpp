@@ -18,7 +18,6 @@ typedef struct Params
 {
   uint64_t row, column;
   char *configFile;
-  char *inputFile;
   bool shouldVerify;
 } Params;
 
@@ -30,7 +29,6 @@ void usage()
           "\n    -r    matrix row (default=2048 elements)"
           "\n    -d    matrix column (default=64 elements)"
           "\n    -c    dramsim config file"
-          "\n    -i    input file containing two vectors (default=generates vector with random numbers)"
           "\n    -v    t = verifies PIM output with host output. (default=false)"
           "\n");
 }
@@ -41,7 +39,6 @@ struct Params getInputParams(int argc, char **argv)
   p.row = 2048;
   p.column = 64;
   p.configFile = nullptr;
-  p.inputFile = nullptr;
   p.shouldVerify = false;
 
   int opt;
@@ -61,9 +58,6 @@ struct Params getInputParams(int argc, char **argv)
       break;
     case 'c':
       p.configFile = optarg;
-      break;
-    case 'i':
-      p.inputFile = optarg;
       break;
     case 'v':
       p.shouldVerify = (*optarg == 't') ? true : false;
@@ -136,16 +130,8 @@ int main(int argc, char *argv[])
   std::vector<std::vector<int>> srcMatrix (params.column, std::vector<int>(params.row, 1)); // matrix should lay out in colXrow format for bitserial PIM
 
   if (params.shouldVerify) {
-    if (params.inputFile == nullptr)
-    {
-      getVector(params.column, srcVector);
-      getMatrix(params.column, params.row, 0, srcMatrix);
-    }
-    else
-    {
-      std::cout << "Reading from input file is not implemented yet." << std::endl;
-      return 1;
-    }
+    getVector(params.column, srcVector);
+    getMatrix(params.column, params.row, 0, srcMatrix);
   }
 
   if (!createDevice(params.configFile))

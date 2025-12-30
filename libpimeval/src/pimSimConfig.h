@@ -67,8 +67,6 @@ public:
   ~pimSimConfig() {}
 
   // Update PIMeval simulation configuration parameters at device creation
-  bool init(PimDeviceEnum deviceType, unsigned numRanks, unsigned numBankPerRank,
-      unsigned numSubarrayPerBank, unsigned numRowPerSubarray, unsigned numColPerSubarray, unsigned bufferSize);
   bool init(PimDeviceEnum deviceType, const std::string& configFilePath);
   void uninit() { reset(); }
   bool isInit() const { return m_isInit; }

@@ -115,7 +115,6 @@ bool pimIsAnalysisMode();
  * @param bufferSize      Optional on-chip buffer size (B) for the device (default is 0). This parameter is only applicable for AiM.
  * @return PimStatus      Status code indicating success or failure of device creation.
  */
-PimStatus pimCreateDevice(PimDeviceEnum deviceType, unsigned numRanks, unsigned numBankPerRank, unsigned numSubarrayPerBank, unsigned numRows, unsigned numCols, unsigned bufferSize = 0);
 PimStatus pimCreateDeviceFromConfig(PimDeviceEnum deviceType, const char* configFileName);
 PimStatus pimGetDeviceProperties(PimDeviceProperties* deviceProperties);
 PimStatus pimDeleteDevice();

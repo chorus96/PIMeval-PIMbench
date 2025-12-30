@@ -14,18 +14,6 @@
 
 //! @brief  Init PIMeval simulation configuration parameters at device creation
 bool
-pimSimConfig::init(PimDeviceEnum deviceType,
-    unsigned numRanks, unsigned numBankPerRank, unsigned numSubarrayPerBank,
-    unsigned numRowPerSubarray, unsigned numColPerSubarray, unsigned bufferSize)
-{
-  reset();  // always reset before init
-  return deriveConfig(deviceType, "",
-                      numRanks, numBankPerRank, numSubarrayPerBank,
-                      numRowPerSubarray, numColPerSubarray, bufferSize);
-}
-
-//! @brief  Init PIMeval simulation configuration parameters at device creation
-bool
 pimSimConfig::init(PimDeviceEnum deviceType, const std::string& configFilePath)
 {
   reset();  // always reset before init

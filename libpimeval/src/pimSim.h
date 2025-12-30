@@ -23,7 +23,6 @@ public:
   static void destroy();
 
   // Device creation and deletion
-  bool createDevice(PimDeviceEnum deviceType, unsigned numRanks, unsigned numBankPerRank, unsigned numSubarrayPerBank, unsigned numRows, unsigned numCols, unsigned bufferSize);
   bool createDeviceFromConfig(PimDeviceEnum deviceType, const char* configFileName);
   bool getDeviceProperties(PimDeviceProperties* deviceProperties);
   bool deleteDevice();
