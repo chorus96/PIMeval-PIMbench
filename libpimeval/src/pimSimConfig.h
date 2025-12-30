@@ -17,7 +17,7 @@
 //!
 //! Supported configuration file parameters:
 //!   memory_config_file = <ini-file>            // memory config file, e.g., DDR4_8Gb_x16_3200.ini
-//!   simulation_target = <PimDeviceEnum>        // simulation target, e.g., PIM_DEVICE_BITSIMD_V
+//!   simulation_target = <PimDeviceEnum>        // simulation target, e.g., PIM_DEVICE_AQUABOLT
 //!   num_ranks = <int>                          // number of ranks
 //!   num_bank_per_rank = <int>                  // number of banks per rank
 //!   num_subarray_per_bank = <int>              // number of subarrays per bank
@@ -29,7 +29,7 @@
 //! Supported environment variables:
 //!   PIMEVAL_SIM_CONFIG <abs-path/cfg-file>     // PIMeval config file, e.g., abs-path/PIMeval_BitSimdV.cfg
 //!   PIMEVAL_MEM_CONFIG <abs-path/ini-file>     // memory config file, e.g., DDR4_8Gb_x16_3200.ini
-//!   PIMEVAL_SIM_TARGET <PimDeviceEnum>         // simulation target, e.g., PIM_DEVICE_BITSIMD_V
+//!   PIMEVAL_SIM_TARGET <PimDeviceEnum>         // simulation target, e.g., PIM_DEVICE_AQUABOLT
 //!   PIMEVAL_NUM_RANKS <int>                    // number of ranks
 //!   PIMEVAL_NUM_BANK_PER_RANK <int>            // number of banks per rank
 //!   PIMEVAL_NUM_SUBARRAY_PER_BANK <int>        // number of subarrays per bank
@@ -176,7 +176,7 @@ private:
   static constexpr int DEFAULT_NUM_ROW_PER_SUBARRAY = 1024;
   static constexpr int DEFAULT_NUM_COL_PER_SUBARRAY = 8192;
   static constexpr int DEFAULT_BUFFER_SIZE = 0;
-  static constexpr PimDeviceEnum DEFAULT_SIM_TARGET = PIM_DEVICE_BANK_LEVEL;
+  static constexpr PimDeviceEnum DEFAULT_SIM_TARGET = PIM_DEVICE_AQUABOLT;
 
   //! @brief  Reset all member variables to default status
   inline void reset() {

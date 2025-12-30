@@ -332,7 +332,7 @@ pimSimConfig::deriveDimensions(unsigned numRanks, unsigned numBankPerRank, unsig
     std::printf("PIM-Error: Memory dimension parameter cannot be 0\n");
     ok = false;
   }
-  if (m_simTarget != PIM_DEVICE_AIM && m_bufferSize > 0) {
+  if (m_bufferSize > 0) {
     std::printf("PIM-Error: PIM Device %s does not support any on-chip buffer.\n", pimUtils::pimDeviceEnumToStr(m_simTarget).c_str());
     ok = false;
   }

@@ -1,2 +1,3 @@
-./libpimeval/build/
-./libpimeval/lib/
+libpimeval/build/
+libpimeval/lib/
+**/gemv.out

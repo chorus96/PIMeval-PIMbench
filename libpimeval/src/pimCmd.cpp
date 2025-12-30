@@ -1426,7 +1426,7 @@ template <typename T> bool
 pimCmdMAC<T>::sanityCheck() const
 {
   pimResMgr* resMgr = m_device->getResMgr();
-  if (m_device->getSimTarget() != PIM_DEVICE_AIM) {
+  if (1/*m_device->getSimTarget() != PIM_DEVICE_AIM*/) {
     std::printf("PIM-Error: PIM CMD %s is only supported on AiM.\n", getName().c_str());
     return false;
   }

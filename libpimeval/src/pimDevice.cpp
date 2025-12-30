@@ -29,29 +29,6 @@ bool
 pimDevice::adjustConfigForSimTarget(unsigned& numRanks, unsigned& numBankPerRank, unsigned& numSubarrayPerBank, unsigned& numRows, unsigned& numCols)
 {
   switch (getSimTarget()) {
-  case PIM_DEVICE_BITSIMD_V:
-  case PIM_DEVICE_BITSIMD_V_NAND:
-  case PIM_DEVICE_BITSIMD_V_MAJ:
-  case PIM_DEVICE_BITSIMD_V_AP:
-  case PIM_DEVICE_DRISA_NOR:
-  case PIM_DEVICE_DRISA_MIXED:
-  case PIM_DEVICE_SIMDRAM:
-  case PIM_DEVICE_BITSIMD_H:
-  case PIM_DEVICE_FULCRUM:
-    std::printf("PIM-Info: Aggregate every two subarrays as a single core\n");
-    if (numSubarrayPerBank % 2 != 0) {
-      std::printf("PIM-Error: Please config even number of subarrays in each bank\n");
-      return false;
-    }
-    numRows *= 2;
-    numSubarrayPerBank /= 2;
-    break;
-  case PIM_DEVICE_BANK_LEVEL:
-  case PIM_DEVICE_AIM:
-    std::printf("PIM-Info: Aggregate all subarrays within a bank as a single core\n");
-    numRows *= numSubarrayPerBank;
-    numSubarrayPerBank = 1;
-    break;
   case PIM_DEVICE_AQUABOLT:
     std::printf("PIM-Info: Aggregate all subarrays of two consecutive banks as a single core\n");
     if (numBankPerRank % 2 != 0) {
@@ -144,7 +121,7 @@ pimDevice::init()
     m_cores.resize(m_numCores, pimCore(m_numRows, m_numCols));
   }
 
-  if (getSimTarget() != PIM_DEVICE_AIM && m_bufferSize > 0) {
+  if (m_bufferSize > 0) {
     std::printf("PIM-Error: Device Does not support On-Chip Buffer\n");
     m_isInit = false;
     m_isValid = false;
@@ -177,7 +154,7 @@ pimDevice::pimAlloc(PimAllocEnum allocType, uint64_t numElements, PimDataType da
 PimObjId
 pimDevice::pimAllocBuffer(uint32_t numElements, PimDataType dataType)
 {
-  if (getSimTarget() != PIM_DEVICE_AIM) {
+  if (1/*getSimTarget() != PIM_DEVICE_AIM*/) {
     std::printf("PIM-Error: Device does not support On-Chip Buffer\n");
     return -1;
   }

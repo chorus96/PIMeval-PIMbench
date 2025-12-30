@@ -512,7 +512,7 @@ pimResMgr::pimAllocAssociated(PimObjId assocId, PimDataType dataType)
              pimUtils::pimDataTypeEnumToStr(dataType).c_str(), bitsPerElement, bitsPerElementAssoc);
     }
   } else if (allocType == PIM_ALLOC_H || allocType == PIM_ALLOC_H1) {
-    if ((bitsPerElement > bitsPerElementAssoc) && (m_device->getSimTarget() != PIM_DEVICE_BANK_LEVEL && m_device->getSimTarget() != PIM_DEVICE_FULCRUM)) {
+    if ((bitsPerElement > bitsPerElementAssoc)) {
       printf("PIM-Error: pimAllocAssociated: New object data type %s (%u bits) is wider than associated object (%u bits), which is not supported in H layout\n",
             pimUtils::pimDataTypeEnumToStr(dataType).c_str(), bitsPerElement, bitsPerElementAssoc);
       return -1;
@@ -549,7 +549,7 @@ pimResMgr::pimAllocAssociated(PimObjId assocId, PimDataType dataType)
   // The reason other horizontal bit-parallel (AiM, Aquabolt) PIM is not included in this condition is that
   // they support only 16-bit floats/ints.
   // If more bit-parallel PIMs are added, this condition should be extended.
-  if ((allocType == PIM_ALLOC_H || allocType == PIM_ALLOC_H1) && (bitsPerElement > bitsPerElementAssoc) && (m_device->getSimTarget() == PIM_DEVICE_BANK_LEVEL || m_device->getSimTarget() == PIM_DEVICE_FULCRUM)) {
+  if ((allocType == PIM_ALLOC_H || allocType == PIM_ALLOC_H1) && (bitsPerElement > bitsPerElementAssoc) && (0/*m_device->getSimTarget() == PIM_DEVICE_BANK_LEVEL*/)) {
     // allocate one region per core, with horizontal layout
     numRegions = (numElements * bitsPerElement - 1) / numCols + 1;
 
@@ -584,7 +584,7 @@ pimResMgr::pimAllocAssociated(PimObjId assocId, PimDataType dataType)
   unsigned regionIdx = 0;
   uint64_t elemIdx = 0;
   for (const pimRegion& region : assocObj.getRegions()) {
-    if ((bitsPerElement > bitsPerElementAssoc) && (allocType == PIM_ALLOC_H || allocType == PIM_ALLOC_H1) && (m_device->getSimTarget() == PIM_DEVICE_BANK_LEVEL || m_device->getSimTarget() == PIM_DEVICE_FULCRUM)) {
+    if ((bitsPerElement > bitsPerElementAssoc) && (allocType == PIM_ALLOC_H || allocType == PIM_ALLOC_H1) && (0/*m_device->getSimTarget() == PIM_DEVICE_BANK_LEVEL*/)) {
       PimCoreId coreId = region.getCoreId();
       unsigned numAllocRows = region.getNumAllocRows() * bitsPerElement / bitsPerElementAssoc;
       unsigned numAllocCols = (regionIdx == numRegions - 1 ? numColsToAllocLast : numCols);
