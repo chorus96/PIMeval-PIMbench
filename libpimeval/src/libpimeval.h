@@ -142,9 +142,6 @@ PimStatus pimConvertType(PimObjId src, PimObjId dest);
 
 // Logic and Arithmetic Operation
 // Mixed data type extensions:
-// - pimAdd/pimSub: If src1 is an integer vector, src2 can be a Boolean vector for accumulation purposes.
-PimStatus pimAdd(PimObjId src1, PimObjId src2, PimObjId dest);
-PimStatus pimSub(PimObjId src1, PimObjId src2, PimObjId dest);
 PimStatus pimMul(PimObjId src1, PimObjId src2, PimObjId dest);
 PimStatus pimDiv(PimObjId src1, PimObjId src2, PimObjId dest);
 PimStatus pimAbs(PimObjId src, PimObjId dest);
@@ -155,8 +152,6 @@ PimStatus pimXor(PimObjId src1, PimObjId src2, PimObjId dest);
 PimStatus pimXnor(PimObjId src1, PimObjId src2, PimObjId dest);
 PimStatus pimMin(PimObjId src1, PimObjId src2, PimObjId dest);
 PimStatus pimMax(PimObjId src1, PimObjId src2, PimObjId dest);
-PimStatus pimAddScalar(PimObjId src, PimObjId dest, uint64_t scalarValue);
-PimStatus pimSubScalar(PimObjId src, PimObjId dest, uint64_t scalarValue);
 PimStatus pimMulScalar(PimObjId src, PimObjId dest, uint64_t scalarValue);
 PimStatus pimDivScalar(PimObjId src, PimObjId dest, uint64_t scalarValue);
 PimStatus pimAndScalar(PimObjId src, PimObjId dest, uint64_t scalarValue);

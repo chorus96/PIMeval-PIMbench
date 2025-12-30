@@ -334,26 +334,6 @@ pimSim::pimBroadcast(PimObjId dest, T value)
   return m_device->executeCmd(std::move(cmd));
 }
 
-// @brief  PIM OP: add
-bool
-pimSim::pimAdd(PimObjId src1, PimObjId src2, PimObjId dest)
-{
-  pimPerfMon perfMon("pimAdd");
-  if (!isValidDevice()) { return false; }
-  std::unique_ptr<pimCmd> cmd = std::make_unique<pimCmdFunc2>(PimCmdEnum::ADD, src1, src2, dest);
-  return m_device->executeCmd(std::move(cmd));
-}
-
-// @brief  PIM OP: sub
-bool
-pimSim::pimSub(PimObjId src1, PimObjId src2, PimObjId dest)
-{
-  pimPerfMon perfMon("pimSub");
-  if (!isValidDevice()) { return false; }
-  std::unique_ptr<pimCmd> cmd = std::make_unique<pimCmdFunc2>(PimCmdEnum::SUB, src1, src2, dest);
-  return m_device->executeCmd(std::move(cmd));
-}
-
 // @brief PIM OP: div
 bool
 pimSim::pimDiv(PimObjId src1, PimObjId src2, PimObjId dest)
@@ -491,22 +471,6 @@ pimSim::pimMax(PimObjId src1, PimObjId src2, PimObjId dest)
   pimPerfMon perfMon("pimMax");
   if (!isValidDevice()) { return false; }
   std::unique_ptr<pimCmd> cmd = std::make_unique<pimCmdFunc2>(PimCmdEnum::MAX, src1, src2, dest);
-  return m_device->executeCmd(std::move(cmd));
-}
-
-bool pimSim::pimAdd(PimObjId src, PimObjId dest, uint64_t scalarValue)
-{
-  pimPerfMon perfMon("pimAddScalar");
-  if (!isValidDevice()) { return false; }
-  std::unique_ptr<pimCmd> cmd = std::make_unique<pimCmdFunc1>(PimCmdEnum::ADD_SCALAR, src, dest, scalarValue);
-  return m_device->executeCmd(std::move(cmd));
-}
-
-bool pimSim::pimSub(PimObjId src, PimObjId dest, uint64_t scalarValue)
-{
-  pimPerfMon perfMon("pimSubScalar");
-  if (!isValidDevice()) { return false; }
-  std::unique_ptr<pimCmd> cmd = std::make_unique<pimCmdFunc1>(PimCmdEnum::SUB_SCALAR, src, dest, scalarValue);
   return m_device->executeCmd(std::move(cmd));
 }
 

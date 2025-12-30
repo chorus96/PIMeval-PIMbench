@@ -73,8 +73,6 @@ public:
   bool pimConvertType(PimObjId src, PimObjId dest);
 
   // Computation
-  bool pimAdd(PimObjId src1, PimObjId src2, PimObjId dest);
-  bool pimSub(PimObjId src1, PimObjId src2, PimObjId dest);
   bool pimDiv(PimObjId src1, PimObjId src2, PimObjId dest);
   bool pimAbs(PimObjId src, PimObjId dest);
   bool pimMul(PimObjId src1, PimObjId src2, PimObjId dest);
@@ -89,8 +87,6 @@ public:
   bool pimNE(PimObjId src1, PimObjId src2, PimObjId dest);
   bool pimMin(PimObjId src1, PimObjId src2, PimObjId dest);
   bool pimMax(PimObjId src1, PimObjId src2, PimObjId dest);
-  bool pimAdd(PimObjId src, PimObjId dest, uint64_t scalarValue);
-  bool pimSub(PimObjId src, PimObjId dest, uint64_t scalarValue);
   bool pimMul(PimObjId src, PimObjId dest, uint64_t scalarValue);
   bool pimDiv(PimObjId src, PimObjId dest, uint64_t scalarValue);
   bool pimAnd(PimObjId src, PimObjId dest, uint64_t scalarValue);

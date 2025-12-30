@@ -184,22 +184,6 @@ pimBroadcastFP(PimObjId dest, float value)
   return ok ? PIM_OK : PIM_ERROR;
 }
 
-//! @brief  PIM add
-PimStatus
-pimAdd(PimObjId src1, PimObjId src2, PimObjId dest)
-{
-  bool ok = pimSim::get()->pimAdd(src1, src2, dest);
-  return ok ? PIM_OK : PIM_ERROR;
-}
-
-//! @brief  PIM sub
-PimStatus
-pimSub(PimObjId src1, PimObjId src2, PimObjId dest)
-{
-  bool ok = pimSim::get()->pimSub(src1, src2, dest);
-  return ok ? PIM_OK : PIM_ERROR;
-}
-
 //! @brief  PIM div
 PimStatus
 pimDiv(PimObjId src1, PimObjId src2, PimObjId dest)
@@ -309,18 +293,6 @@ PimStatus
 pimMax(PimObjId src1, PimObjId src2, PimObjId dest)
 {
   bool ok = pimSim::get()->pimMax(src1, src2, dest);
-  return ok ? PIM_OK : PIM_ERROR;
-}
-
-PimStatus pimAddScalar(PimObjId src, PimObjId dest, uint64_t scalarValue)
-{
-  bool ok = pimSim::get()->pimAdd(src, dest, scalarValue);
-  return ok ? PIM_OK : PIM_ERROR;
-}
-
-PimStatus pimSubScalar(PimObjId src, PimObjId dest, uint64_t scalarValue)
-{
-  bool ok = pimSim::get()->pimSub(src, dest, scalarValue);
   return ok ? PIM_OK : PIM_ERROR;
 }
 
