@@ -84,26 +84,6 @@ enum class PimCmdEnum {
   AES_INVERSE_SBOX,
   PREFIX_SUM,
   MAC,
-
-  // BitSIMD v-layout commands
-  ROW_R,
-  ROW_W,
-  RREG_MOV,
-  RREG_SET,
-  RREG_NOT,
-  RREG_AND,
-  RREG_OR,
-  RREG_NAND,
-  RREG_NOR,
-  RREG_XOR,
-  RREG_XNOR,
-  RREG_MAJ,
-  RREG_SEL,
-  RREG_ROTATE_R,
-  RREG_ROTATE_L,
-  // SIMDRAM
-  ROW_AP,
-  ROW_AAP,
 };
 
 
@@ -570,20 +550,6 @@ public:
 protected:
   PimObjId m_src;
   std::vector<uint64_t> m_regionBoundary;
-};
-
-//! @class  pimCmdReadRowToSa
-//! @brief  Pim CMD: BitSIMD-V: Read a row to SA
-class pimCmdReadRowToSa : public pimCmd
-{
-public:
-  pimCmdReadRowToSa(PimCmdEnum cmdType, PimObjId objId, unsigned ofst)
-    : pimCmd(cmdType), m_objId(objId), m_ofst(ofst) {}
-  virtual ~pimCmdReadRowToSa() {}
-  virtual bool execute() override;
-protected:
-  PimObjId m_objId;
-  unsigned m_ofst;
 };
 
 #endif

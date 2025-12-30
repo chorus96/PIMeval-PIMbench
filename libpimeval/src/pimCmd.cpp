@@ -81,23 +81,6 @@ pimCmd::getName(PimCmdEnum cmdType, const std::string& suffix)
     { PimCmdEnum::ROTATE_ELEM_L, "rotate_elem_l" },
     { PimCmdEnum::SHIFT_ELEM_R, "shift_elem_r" },
     { PimCmdEnum::SHIFT_ELEM_L, "shift_elem_l" },
-    { PimCmdEnum::ROW_R, "row_r" },
-    { PimCmdEnum::ROW_W, "row_w" },
-    { PimCmdEnum::RREG_MOV, "rreg.mov" },
-    { PimCmdEnum::RREG_SET, "rreg.set" },
-    { PimCmdEnum::RREG_NOT, "rreg.not" },
-    { PimCmdEnum::RREG_AND, "rreg.and" },
-    { PimCmdEnum::RREG_OR, "rreg.or" },
-    { PimCmdEnum::RREG_NAND, "rreg.nand" },
-    { PimCmdEnum::RREG_NOR, "rreg.nor" },
-    { PimCmdEnum::RREG_XOR, "rreg.xor" },
-    { PimCmdEnum::RREG_XNOR, "rreg.xnor" },
-    { PimCmdEnum::RREG_MAJ, "rreg.maj" },
-    { PimCmdEnum::RREG_SEL, "rreg.sel" },
-    { PimCmdEnum::RREG_ROTATE_R, "rreg.rotate_r" },
-    { PimCmdEnum::RREG_ROTATE_L, "rreg.rotate_l" },
-    { PimCmdEnum::ROW_AP, "row_ap" },
-    { PimCmdEnum::ROW_AAP, "row_aap" },
   };
   auto it = cmdNames.find(cmdType);
   return it != cmdNames.end() ? it->second + suffix : "unknown";
@@ -1568,32 +1551,6 @@ pimCmdMAC<T>::updateStats() const
   bool isVLayout = objSrc.isVLayout();
   pimeval::perfEnergy mPerfEnergy = pimSim::get()->getPerfEnergyModel()->getPerfEnergyForMac(m_cmdType, objSrc);
   pimSim::get()->getStatsMgr()->recordCmd(getName(dataType, isVLayout), mPerfEnergy);
-  return true;
-}
-
-//! @brief  Pim CMD: BitSIMD-V: Read a row to SA
-bool
-pimCmdReadRowToSa::execute()
-{
-  if (m_debugCmds) {
-    std::printf("PIM-MicroOp: BitSIMD-V ReadRowToSa (obj id %d ofst %u)\n", m_objId, m_ofst);
-  }
-
-  pimResMgr* resMgr = m_device->getResMgr();
-  const pimObjInfo& objSrc = resMgr->getObjInfo(m_objId);
-  for (unsigned i = 0; i < objSrc.getRegions().size(); ++i) {
-    const pimRegion& srcRegion = objSrc.getRegions()[i];
-    if (m_ofst >= srcRegion.getNumAllocRows()) {
-      std::printf("PIM-Error: Row offset %u out of range [0, %u)\n", m_ofst, srcRegion.getNumAllocRows());
-      return false;
-    }
-    PimCoreId coreId = srcRegion.getCoreId();
-    m_device->getCore(coreId).readRow(srcRegion.getRowIdx() + m_ofst);
-  }
-
-  // Update stats
-  pimeval::perfEnergy prfEnrgy;
-  pimSim::get()->getStatsMgr()->recordCmd(getName(), prfEnrgy);
   return true;
 }
 
