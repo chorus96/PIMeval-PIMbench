@@ -7,7 +7,6 @@
 #include "libpimeval.h"
 #include "pimCmd.h"
 
-
 //! @class  pimCmdFuse
 //! @brief  Pim CMD: PIM API Fusion
 class pimCmdFuse : public pimCmd

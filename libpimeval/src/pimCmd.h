@@ -10,13 +10,12 @@
 #include "pimUtils.h"        // for pimDataTypeEnumToStr, threadWorker
 #include <vector>            // for vector
 #include <string>            // for string
-#include <climits>            // for numeric_limits
+#include <climits>           // for numeric_limits
 #include <cassert>           // for assert
 #include <bitset>            // for bitset
 #include <variant>
 
 class pimDevice;
-
 
 enum class PimCmdEnum {
   NOOP = 0,

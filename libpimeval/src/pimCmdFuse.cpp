@@ -4,7 +4,6 @@
 #include "pimCmdFuse.h"
 #include <cstdio>
 
-
 //! @brief  Pim CMD: PIM API Fusion
 bool
 pimCmdFuse::execute()
