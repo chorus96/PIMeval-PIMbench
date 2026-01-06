@@ -1,3 +1,4 @@
 libpimeval/build/
 libpimeval/lib/
 **/gemv.out
+gemv.out.log
